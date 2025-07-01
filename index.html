@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بقايا روح</title>
+
+  <!-- الخط العربي -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --card: #f0f0f0;
+      --border: #ccc;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --text: #ffffff;
+        --card: #2a2a2a;
+        --border: #444;
+      }
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      direction: rtl;
+    }
+
+    header {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  url('cover.jpg') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px 30px;
+      border-radius: 15px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .description {
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    .chapters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .chapter-card {
+      background-color: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .chapter-card:hover {
+      transform: scale(1.05);
+    }
+
+    .chapter-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .chapter-card h3 {
+      padding: 10px;
+      margin: 0;
+      text-align: center;
+      font-size: 1.1em;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer img {
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    .footer p {
+      margin: 10px 0 0;
+      font-size: 1em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    
+  </header>
+
+  <div class="description">
+    مانجا غامضة تدور أحداثها في عالم يعج بالأسرار، حيث يكتشف الأبطال شيئًا يفوق خيالهم ويقلب واقعهم رأسًا على عقب.
+  </div>
+
+  <div class="chapters">
+    <a href="chapter1.pdf" target="_blank">
+      <div class="chapter-card">
+        <img src="chapter1.jpg" alt="فصل 1">
+        <h3>الفصل 1: العودة</h3>
+      </div>
+    </a>
+    <a href="chapter2.pdf" target="_blank">
+      <div class="chapter-card">
+        <img src="chapter2.jpg" alt="فصل 2">
+        <h3>الفصل 2: اللوحة التي لا تموت</h3>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer">
+    <img src="me.jpg" alt="Marawan">
+    <p>Marawan Mohamed</p>
+  </div>
+
+</body>
+</html>
