@@ -409,7 +409,7 @@ url('cover.jpg') no-repeat center center / cover;
       font-size: 0.9rem;
     }
 
-    /* بطاقات الفصول */
+    /* 🚀 التعديل 1: إزالة الحدود من بطاقات الفصول */
     .chapters {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -425,7 +425,7 @@ url('cover.jpg') no-repeat center center / cover;
       cursor: pointer;
       box-shadow: 0 5px 15px var(--shadow);
       position: relative;
-      border: 1px solid var(--border);
+      /* تم إزالة الحدود هنا حسب الطلب 🚫 */
       display: flex;
       flex-direction: column;
     }
@@ -1040,6 +1040,7 @@ url('cover.jpg') no-repeat center center / cover;
     </div>
   </div>
 
+  <!-- 🚀 التعديل 2: إزالة حقل الاسم من نموذج الاتصال -->
   <!-- قسم الاتصال -->
   <div id="contact" class="contact-section animate-on-scroll">
     <div class="contact-container">
@@ -1050,10 +1051,7 @@ url('cover.jpg') no-repeat center center / cover;
       
       <div class="contact-form">
         <form id="contact-form">
-          <div class="form-group">
-            <label for="name">الاسم الكامل</label>
-            <input type="text" id="name" name="name" required>
-          </div>
+          <!-- تم إزالة حقل الاسم هنا حسب الطلب 🚫 -->
           
           <div class="form-group">
             <label for="email">البريد الإلكتروني</label>
@@ -1075,16 +1073,17 @@ url('cover.jpg') no-repeat center center / cover;
       </div>
       
       <div class="contact-info">
+        <!-- 🚀 التعديل 3: جعل البريد الإلكتروني ورقم الهاتف قابلين للنقر -->
         <div class="info-item">
           <i class="fas fa-envelope"></i>
           <h3>البريد الإلكتروني</h3>
-          <p>ma12rawano@gmail.com</p>
+          <p><a href="mailto:ma12rawano@gmail.com" style="color: inherit; text-decoration: none;">ma12rawano@gmail.com</a></p>
         </div>
         
         <div class="info-item">
           <i class="fas fa-phone"></i>
           <h3>الهاتف</h3>
-          <p>+20 01220238933</p>
+          <p><a href="tel:+2001220238933" style="color: inherit; text-decoration: none;">+20 01220238933</a></p>
         </div>
         
         <div class="info-item">
@@ -1123,8 +1122,9 @@ url('cover.jpg') no-repeat center center / cover;
       
       <div class="footer-section">
         <h3>اتصل بنا</h3>
-        <p><i class="fas fa-envelope"></i> ma12rawano@gmail.com</p>
-        <p><i class="fas fa-phone"></i>+20 01220238933</p>
+        <!-- 🚀 التعديل 4: جعل البريد الإلكتروني ورقم الهاتف قابلين للنقر في الفوتر -->
+        <p><a href="mailto:ma12rawano@gmail.com" style="color: inherit; text-decoration: none;"><i class="fas fa-envelope"></i> ma12rawano@gmail.com</a></p>
+        <p><a href="tel:+2001220238933" style="color: inherit; text-decoration: none;"><i class="fas fa-phone"></i>+20 01220238933</a></p>
         <p><i class="fas fa-map-marker-alt"></i>القاهره , مصر</p>
       </div>
     </div>
