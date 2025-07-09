@@ -1,157 +1,835 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بقايا روح</title>
-
+  <title>بقايا روح | مانجا غامضة</title>
+  
   <!-- الخط العربي -->
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
     :root {
+      --primary: #8a2be2;
+      --primary-light: #a45ee5;
+      --primary-dark: #6a1fb9;
+      --secondary: #ff6b6b;
+      --accent: #4ecdc4;
       --bg: #ffffff;
       --text: #000000;
       --card: #f0f0f0;
-      --border: #ccc;
+      --border: #e0e0e0;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --overlay: rgba(0, 0, 0, 0.7);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #1a1a1a;
-        --text: #ffffff;
+        --text: #f0f0f0;
         --card: #2a2a2a;
         --border: #444;
+        --shadow: rgba(0, 0, 0, 0.4);
+        --overlay: rgba(0, 0, 0, 0.85);
       }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Tajawal', sans-serif;
-      margin: 0;
-      padding: 0;
       background-color: var(--bg);
       color: var(--text);
-      direction: rtl;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.5s ease;
     }
 
-    header {
+    /* شريط التنقل */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background-color: var(--overlay);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: var(--transition);
+      box-shadow: 0 2px 15px var(--shadow);
+    }
+
+    .navbar.scrolled {
+      padding: 10px 5%;
+      background-color: var(--overlay);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: var(--primary-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
       position: relative;
-      height: 60vh;
-      min-height: 400px;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                  url('cover.jpg') no-repeat center center / cover;
+      padding: 5px 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-light);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-icons button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 5px;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    .nav-icons button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--primary-light);
+    }
+
+    /* الهيدر */
+    header {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      background: linear-gradient(var(--overlay), var(--overlay)),
+                  url('https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center / cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .header-content {
+      max-width: 800px;
+      padding: 0 20px;
+      z-index: 2;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeUp 1s forwards 0.5s;
+    }
+
     header h1 {
-      font-size: 3em;
+      font-size: 4.5rem;
       color: white;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 15px 30px;
-      border-radius: 15px;
-      z-index: 1;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       position: relative;
     }
 
-    .description {
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 1.2em;
+    header h1::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--primary-light);
+      border-radius: 2px;
     }
 
+    .subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 50px;
+      margin-top: 20px;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);
+      border: 2px solid transparent;
+      font-size: 1.1rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+      border-color: white;
+    }
+
+    /* القسم الرئيسي */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      position: relative;
+      color: var(--primary);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .description {
+      text-align: center;
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    /* بطاقات الفصول */
     .chapters {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
       padding: 20px;
     }
 
     .chapter-card {
       background-color: var(--card);
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
-      transition: transform 0.3s ease;
+      transition: var(--transition);
       cursor: pointer;
+      box-shadow: 0 5px 15px var(--shadow);
+      position: relative;
+      border: 1px solid var(--border);
     }
 
     .chapter-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 30px var(--shadow);
+    }
+
+    .chapter-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0.8;
+      transition: height 0.3s ease;
+    }
+
+    .chapter-card:hover::before {
+      height: 8px;
     }
 
     .chapter-card img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .chapter-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .chapter-info {
+      padding: 20px;
+      position: relative;
     }
 
     .chapter-card h3 {
-      padding: 10px;
-      margin: 0;
-      text-align: center;
-      font-size: 1.1em;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--primary);
     }
 
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      border-top: 1px solid var(--border);
+    .chapter-card p {
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
     }
 
-    .footer img {
-      width: 60px;
-      border-radius: 50%;
+    .chapter-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text);
+      opacity: 0.7;
     }
 
-    .footer p {
-      margin: 10px 0 0;
-      font-size: 1em;
-    }
-
-    a {
+    .read-btn {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--primary);
+      color: white;
       text-decoration: none;
-      color: inherit;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      margin-top: 10px;
+      border: 1px solid transparent;
+    }
+
+    .read-btn:hover {
+      background: transparent;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* قسم الفريق */
+    .team {
+      background: linear-gradient(135deg, var(--card), var(--bg));
+      padding: 80px 0;
+      margin-top: 60px;
+    }
+
+    .team-members {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .team-member {
+      background: var(--card);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px var(--shadow);
+    }
+
+    .member-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin: 0 auto 20px;
+    }
+
+    .team-member h4 {
+      font-size: 1.4rem;
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+
+    .team-member .role {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      color: var(--text);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* الفوتر */
+    .footer {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 60px 20px 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: right;
+    }
+
+    .footer-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      right: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      transform: translateX(-5px);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    /* تأثيرات التمرير */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* الرسوم المتحركة */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    /* التكيف مع الشاشات الصغيرة */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 12px 5%;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      header h1 {
+        font-size: 3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .chapters {
+        grid-template-columns: 1fr;
+      }
+      
+      .team-members {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* زر القائمة المتنقلة */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-
-  <header>
+  <!-- شريط التنقل -->
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <i class="fas fa-ghost"></i>
+      <span>بقايا روح</span>
+    </a>
     
+    <div class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#chapters">الفصول</a>
+      <a href="#about">حول العمل</a>
+      <a href="#team">الفريق</a>
+      <a href="#contact">اتصل بنا</a>
+    </div>
+    
+    <div class="nav-icons">
+      <button id="theme-toggle" aria-label="تبديل وضع الألوان">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="mobile-menu-btn" aria-label="فتح القائمة">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- الهيدر -->
+  <header id="home">
+    <div class="header-content">
+      <h1>بقايا روح</h1>
+      <p class="subtitle">مانجا غامضة تدور أحداثها في عالم يعج بالأسرار، حيث يكتشف الأبطال شيئًا يفوق خيالهم ويقلب واقعهم رأسًا على عقب.</p>
+      <a href="#chapters" class="cta-button">اكتشف الفصول <i class="fas fa-arrow-left"></i></a>
+    </div>
   </header>
 
-  <div class="description">
-    مانجا غامضة تدور أحداثها في عالم يعج بالأسرار، حيث يكتشف الأبطال شيئًا يفوق خيالهم ويقلب واقعهم رأسًا على عقب.
+  <!-- المحتوى الرئيسي -->
+  <div class="container">
+    <h2 class="section-title animate-on-scroll">حول المانجا</h2>
+    <p class="description animate-on-scroll">
+      "بقايا روح" هي رحلة استكشافية في عالم موازٍ مليء بالأسرار والغموض. تتبع القصة مجموعة من الأصدقاء يكتشفون لوحة قديمة تحمل قوى خارقة، 
+      تقودهم إلى عالم غريب حيث تختلط الحدود بين الواقع والخيال. مع تقدم القصة، يكتشفون أنهم جزء من نبوءة قديمة قد تغير مصير العالمين.
+    </p>
+
+    <!-- الفصول -->
+    <h2 class="section-title animate-on-scroll" id="chapters">الفصول</h2>
+    <div class="chapters">
+      <a href="chapter1.pdf" target="_blank" class="chapter-card animate-on-scroll">
+        <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 1">
+        <div class="chapter-info">
+          <h3>الفصل 1: العودة</h3>
+          <p>اكتشاف اللوحة الغامضة في القبو القديم الذي يغير حياة الشخصيات إلى الأبد.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 15 يناير 2023</span>
+            <span><i class="far fa-clock"></i> 24 صفحة</span>
+          </div>
+          <a href="#" class="read-btn">اقرأ الآن</a>
+        </div>
+      </a>
+      
+      <a href="chapter2.pdf" target="_blank" class="chapter-card animate-on-scroll">
+        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 2">
+        <div class="chapter-info">
+          <h3>الفصل 2: اللوحة التي لا تموت</h3>
+          <p>الأسرار المخفية وراء اللوحة تبدأ بالظهور، وتكشف عن عالم موازٍ غريب.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 12 فبراير 2023</span>
+            <span><i class="far fa-clock"></i> 28 صفحة</span>
+          </div>
+          <a href="#" class="read-btn">اقرأ الآن</a>
+        </div>
+      </a>
+      
+      <a href="chapter3.pdf" target="_blank" class="chapter-card animate-on-scroll">
+        <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 3">
+        <div class="chapter-info">
+          <h3>الفصل 3: صدى الذاكرة</h3>
+          <p>الذكريات المفقودة تعود لتربط الشخصيات بمصيرهم في العالم الآخر.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 18 مارس 2023</span>
+            <span><i class="far fa-clock"></i> 32 صفحة</span>
+          </div>
+          <a href="#" class="read-btn">اقرأ الآن</a>
+        </div>
+      </a>
+      
+      <a href="chapter4.pdf" target="_blank" class="chapter-card animate-on-scroll">
+        <img src="https://images.unsplash.com/photo-1531303516758-6e803a6a6aeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 4">
+        <div class="chapter-info">
+          <h3>الفصل 4: ندم متأخر</h3>
+          <p>الاختيارات الصعبة والآثار غير المتوقعة لقرارات الماضي تظهر.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 22 أبريل 2023</span>
+            <span><i class="far fa-clock"></i> 30 صفحة</span>
+          </div>
+          <a href="#" class="read-btn">اقرأ الآن</a>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <div class="chapters">
-  <a href="chapter1.pdf" target="_blank">
-    <div class="chapter-card">
-      <img src="chapter1.jpg" alt="فصل 1">
-      <h3>الفصل 1: العودة</h3>
+  <!-- قسم الفريق -->
+  <div class="team" id="team">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">فريق العمل</h2>
+      <div class="team-members">
+        <div class="team-member animate-on-scroll">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="المؤلف" class="member-img">
+          <h4>عمر الشريف</h4>
+          <div class="role">كاتب القصة</div>
+          <p>مؤلف قصصي خبير في الخيال العلمي والفانتازيا، صاحب العديد من الأعمال الناجحة.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="team-member animate-on-scroll">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="الرسامة" class="member-img">
+          <h4>ليلى أحمد</h4>
+          <div class="role">رسامة المانجا</div>
+          <p>فنانة موهوبة متخصصة في الرسم الرقمي والمانجا، عملت في العديد من المشاريع المشهورة.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-deviantart"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
-  </a>
-  <a href="chapter2.pdf" target="_blank">
-    <div class="chapter-card">
-      <img src="chapter2.jpg" alt="فصل 2">
-      <h3>الفصل 2: اللوحة التي لا تموت</h3>
-    </div>
-  </a>
-  <a href="chapter3.pdf" target="_blank">
-    <div class="chapter-card">
-      <img src="chapter3.jpg" alt="فصل 3">
-      <h3>الفصل 3: صدى الذاكرة</h3>
-    </div>
-  </a>
-  <a href="chapter4.pdf" target="_blank">
-    <div class="chapter-card">
-      <img src="chapter4.jpg" alt="فصل 4">
-      <h3>الفصل 4: ندم متأخر</h3>
-    </div>
-  </a>
-</div>
+  </div>
 
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>بقايا روح</h3>
+        <p>مانجا غامضة تأخذك في رحلة إلى عالم موازٍ حيث الأسرار والخيال يمتزجان بالواقع.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>روابط سريعة</h3>
+        <ul class="footer-links">
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#chapters">الفصول</a></li>
+          <li><a href="#about">حول العمل</a></li>
+          <li><a href="#team">الفريق</a></li>
+          <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>اتصل بنا</h3>
+        <p><i class="fas fa-envelope"></i> info@baqaya-rooh.com</p>
+        <p><i class="fas fa-phone"></i> +966 123 456 789</p>
+        <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2023 بقايا روح. جميع الحقوق محفوظة.
+    </div>
+  </footer>
+
+  <script>
+    // وظيفة لتحميل الصفحة بسلاسة
+    document.addEventListener('DOMContentLoaded', function() {
+      // تبديل وضع الألوان
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+      
+      themeToggle.addEventListener('click', function() {
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+          document.documentElement.removeAttribute('data-theme');
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+        }
+      });
+      
+      // تأثير التمرير للشريط التنقل
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+      
+      // تأثير الظهور عند التمرير
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+      });
+      
+      // التمرير السلس للروابط
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
