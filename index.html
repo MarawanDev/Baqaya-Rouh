@@ -222,7 +222,7 @@
       height: 100vh;
       min-height: 600px;
       background: linear-gradient(var(--overlay), var(--overlay)),
-url('cover.jpg') no-repeat center center / cover;
+                  url('https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80') no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -409,7 +409,7 @@ url('cover.jpg') no-repeat center center / cover;
       font-size: 0.9rem;
     }
 
-    /* 🚀 التعديل 1: إزالة الحدود من بطاقات الفصول */
+    /* بطاقات الفصول */
     .chapters {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -425,7 +425,6 @@ url('cover.jpg') no-repeat center center / cover;
       cursor: pointer;
       box-shadow: 0 5px 15px var(--shadow);
       position: relative;
-      /* تم إزالة الحدود هنا حسب الطلب 🚫 */
       display: flex;
       flex-direction: column;
     }
@@ -470,10 +469,14 @@ url('cover.jpg') no-repeat center center / cover;
       flex-direction: column;
     }
 
+    /* 🚀 التعديل 4: إزالة الحواف من نص الفصول */
     .chapter-card h3 {
       font-size: 1.4rem;
       margin-bottom: 10px;
       color: var(--primary);
+      padding: 0; /* تم إزالة الحشو */
+      border: none; /* تم إزالة الحدود */
+      background: none; /* تم إزالة الخلفية */
     }
 
     .chapter-card p {
@@ -492,25 +495,8 @@ url('cover.jpg') no-repeat center center / cover;
       opacity: 0.7;
     }
 
-    .read-btn {
-      display: inline-block;
-      padding: 8px 20px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      transition: var(--transition);
-      margin-top: 10px;
-      border: 1px solid transparent;
-      text-align: center;
-    }
-
-    .read-btn:hover {
-      background: transparent;
-      border-color: var(--primary);
-      color: var(--primary);
-    }
+    /* 🚀 التعديل 3: إزالة زر اقرأ الآن */
+    /* .read-btn تم إزالته بالكامل */
 
     /* قسم الفريق */
     .team {
@@ -594,71 +580,8 @@ url('cover.jpg') no-repeat center center / cover;
       padding: 0 20px;
     }
 
-    .contact-form {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 40px;
-      max-width: 700px;
-      margin: 0 auto;
-      backdrop-filter: blur(10px);
-    }
-
-    .form-group {
-      margin-bottom: 25px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 15px;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-      font-family: 'Tajawal', sans-serif;
-      transition: var(--transition);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: white;
-      background: rgba(255, 255, 255, 0.2);
-      outline: none;
-    }
-
-    .form-group textarea {
-      height: 150px;
-      resize: vertical;
-    }
-
-    .submit-btn {
-      display: inline-block;
-      width: 100%;
-      padding: 15px;
-      background: white;
-      color: var(--primary);
-      border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: 'Tajawal', sans-serif;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      background: var(--accent);
-      color: white;
-    }
+    /* 🚀 التعديل 1: إزالة نموذج الاتصال بالكامل */
+    /* تم إزالة .contact-form بالكامل */
 
     .contact-info {
       display: grid;
@@ -967,7 +890,7 @@ url('cover.jpg') no-repeat center center / cover;
     <h2 class="section-title animate-on-scroll" id="chapters">الفصول</h2>
     <div class="chapters">
       <a href="chapter1.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter1.jpg" alt="فصل 1">
+        <img src="https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 1">
         <div class="chapter-info">
           <h3>الفصل 1: العودة</h3>
           <p>اكتشاف اللوحة الغامضة في القبو القديم الذي يغير حياة الشخصيات إلى الأبد.</p>
@@ -975,12 +898,12 @@ url('cover.jpg') no-repeat center center / cover;
             <span><i class="far fa-calendar"></i> 15 يناير 2023</span>
             <span><i class="far fa-clock"></i> 24 صفحة</span>
           </div>
-          <a href="#" class="read-btn">اقرأ الآن</a>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
       <a href="chapter2.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter2.jpg" alt="فصل 2">
+        <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 2">
         <div class="chapter-info">
           <h3>الفصل 2: اللوحة التي لا تموت</h3>
           <p>الأسرار المخفية وراء اللوحة تبدأ بالظهور، وتكشف عن عالم موازٍ غريب.</p>
@@ -988,12 +911,12 @@ url('cover.jpg') no-repeat center center / cover;
             <span><i class="far fa-calendar"></i> 12 فبراير 2023</span>
             <span><i class="far fa-clock"></i> 28 صفحة</span>
           </div>
-          <a href="#" class="read-btn">اقرأ الآن</a>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
       <a href="chapter3.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter3.jpg" alt="فصل 3">
+        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 3">
         <div class="chapter-info">
           <h3>الفصل 3: صدى الذاكرة</h3>
           <p>الذكريات المفقودة تعود لتربط الشخصيات بمصيرهم في العالم الآخر.</p>
@@ -1001,12 +924,12 @@ url('cover.jpg') no-repeat center center / cover;
             <span><i class="far fa-calendar"></i> 18 مارس 2023</span>
             <span><i class="far fa-clock"></i> 32 صفحة</span>
           </div>
-          <a href="#" class="read-btn">اقرأ الآن</a>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
       <a href="chapter4.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter4.jpg" alt="فصل 4">
+        <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 4">
         <div class="chapter-info">
           <h3>الفصل 4: ندم متأخر</h3>
           <p>الاختيارات الصعبة والآثار غير المتوقعة لقرارات الماضي تظهر.</p>
@@ -1014,7 +937,7 @@ url('cover.jpg') no-repeat center center / cover;
             <span><i class="far fa-calendar"></i> 22 أبريل 2023</span>
             <span><i class="far fa-clock"></i> 30 صفحة</span>
           </div>
-          <a href="#" class="read-btn">اقرأ الآن</a>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
     </div>
@@ -1026,7 +949,7 @@ url('cover.jpg') no-repeat center center / cover;
       <h2 class="section-title animate-on-scroll">فريق العمل</h2>
       <div class="team-members">
         <div class="team-member animate-on-scroll">
-          <img src="me.jpg" alt="صورة المطور" class="member-img">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="صورة المطور" class="member-img">
           <h4> مروان محمد</h4>
           <div class="role">مطور الموقع</div>
           <p>مطور ويب محترف متخصص في إنشاء مواقع تفاعلية وجذابة للمانجا والقصص المصورة.</p>
@@ -1040,50 +963,26 @@ url('cover.jpg') no-repeat center center / cover;
     </div>
   </div>
 
-  <!-- 🚀 التعديل 2: إزالة حقل الاسم من نموذج الاتصال -->
+  <!-- 🚀 التعديل 1: إزالة نموذج الاتصال بالكامل -->
   <!-- قسم الاتصال -->
   <div id="contact" class="contact-section animate-on-scroll">
     <div class="contact-container">
       <h2 class="section-title" style="color: white;">اتصل بنا</h2>
       <p class="description" style="color: rgba(255, 255, 255, 0.9);">
-        لديك استفسار أو ملاحظة؟ لا تتردد في التواصل معنا عبر النموذج التالي
+        يمكنك التواصل معنا عبر المعلومات التالية
       </p>
       
-      <div class="contact-form">
-        <form id="contact-form">
-          <!-- تم إزالة حقل الاسم هنا حسب الطلب 🚫 -->
-          
-          <div class="form-group">
-            <label for="email">البريد الإلكتروني</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject">الموضوع</label>
-            <input type="text" id="subject" name="subject" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">الرسالة</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          
-          <button type="submit" class="submit-btn">إرسال الرسالة</button>
-        </form>
-      </div>
-      
       <div class="contact-info">
-        <!-- 🚀 التعديل 3: جعل البريد الإلكتروني ورقم الهاتف قابلين للنقر -->
         <div class="info-item">
           <i class="fas fa-envelope"></i>
           <h3>البريد الإلكتروني</h3>
-          <p><a href="mailto:ma12rawano@gmail.com" style="color: inherit; text-decoration: none;">ma12rawano@gmail.com</a></p>
+          <p><a href="mailto:ma12rawano@gmail.com" style="color: white; text-decoration: none;">ma12rawano@gmail.com</a></p>
         </div>
         
         <div class="info-item">
           <i class="fas fa-phone"></i>
           <h3>الهاتف</h3>
-          <p><a href="tel:+2001220238933" style="color: inherit; text-decoration: none;">+20 01220238933</a></p>
+          <p><a href="tel:+2001220238933" style="color: white; text-decoration: none;">+20 01220238933</a></p>
         </div>
         
         <div class="info-item">
@@ -1122,9 +1021,8 @@ url('cover.jpg') no-repeat center center / cover;
       
       <div class="footer-section">
         <h3>اتصل بنا</h3>
-        <!-- 🚀 التعديل 4: جعل البريد الإلكتروني ورقم الهاتف قابلين للنقر في الفوتر -->
-        <p><a href="mailto:ma12rawano@gmail.com" style="color: inherit; text-decoration: none;"><i class="fas fa-envelope"></i> ma12rawano@gmail.com</a></p>
-        <p><a href="tel:+2001220238933" style="color: inherit; text-decoration: none;"><i class="fas fa-phone"></i>+20 01220238933</a></p>
+        <p><a href="mailto:ma12rawano@gmail.com" style="color: white; text-decoration: none;"><i class="fas fa-envelope"></i> ma12rawano@gmail.com</a></p>
+        <p><a href="tel:+2001220238933" style="color: white; text-decoration: none;"><i class="fas fa-phone"></i>+20 01220238933</a></p>
         <p><i class="fas fa-map-marker-alt"></i>القاهره , مصر</p>
       </div>
     </div>
@@ -1231,18 +1129,6 @@ url('cover.jpg') no-repeat center center / cover;
           }
         });
       });
-      
-      // إرسال نموذج الاتصال
-      const contactForm = document.getElementById('contact-form');
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // هنا يمكنك إضافة كود لإرسال البيانات إلى الخادم
-          alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا.');
-          contactForm.reset();
-        });
-      }
     });
   </script>
 </body>
