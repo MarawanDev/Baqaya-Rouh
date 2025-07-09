@@ -196,6 +196,7 @@
       color: var(--text);
       font-size: 1.5rem;
       cursor: pointer;
+      z-index: 2001;
     }
 
     .overlay {
@@ -222,7 +223,7 @@
       height: 100vh;
       min-height: 600px;
       background: linear-gradient(var(--overlay), var(--overlay)),
-                  url('cover.jpg') no-repeat center center / cover;
+                  url('https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80') no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -480,6 +481,25 @@
       padding: 10px;
     }
 
+    .chapter-card p {
+      color: var(--text);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .chapter-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text);
+      opacity: 0.7;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
+
     /* قسم الفريق */
     .team {
       background: linear-gradient(135deg, var(--card), var(--bg));
@@ -669,7 +689,7 @@
       border-radius: 50%;
       color: white;
       font-size: 1.2rem;
-      transition: var(--transition);
+      transition: var(--transition;
     }
 
     .footer-social a:hover {
@@ -766,6 +786,13 @@
       
       .detail-card {
         padding: 20px;
+      }
+    }
+    
+    /* إصلاحات سطح المكتب */
+    @media (min-width: 769px) {
+      .mobile-menu, .overlay {
+        display: none;
       }
     }
   </style>
@@ -869,23 +896,51 @@
     <h2 class="section-title animate-on-scroll" id="chapters">الفصول</h2>
     <div class="chapters">
       <a href="chapter1.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter1.jpg" alt="فصل 1">
-        <h3>الفصل 1: العودة</h3>
+        <img src="https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 1">
+        <div class="chapter-info">
+          <h3>الفصل 1: العودة</h3>
+          <p>اكتشاف اللوحة الغامضة في القبو القديم الذي يغير حياة الشخصيات إلى الأبد.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 15 يناير 2023</span>
+            <span><i class="far fa-clock"></i> 24 صفحة</span>
+          </div>
+        </div>
       </a>
       
       <a href="chapter2.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter2.jpg" alt="فصل 2">
-        <h3>الفصل 2: اللوحة التي لا تموت</h3>
+        <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 2">
+        <div class="chapter-info">
+          <h3>الفصل 2: اللوحة التي لا تموت</h3>
+          <p>الأسرار المخفية وراء اللوحة تبدأ بالظهور، وتكشف عن عالم موازٍ غريب.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 12 فبراير 2023</span>
+            <span><i class="far fa-clock"></i> 28 صفحة</span>
+          </div>
+        </div>
       </a>
       
       <a href="chapter3.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter3.jpg" alt="فصل 3">
-        <h3>الفصل 3: صدى الذاكرة</h3>
+        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 3">
+        <div class="chapter-info">
+          <h3>الفصل 3: صدى الذاكرة</h3>
+          <p>الذكريات المفقودة تعود لتربط الشخصيات بمصيرهم في العالم الآخر.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 18 مارس 2023</span>
+            <span><i class="far fa-clock"></i> 32 صفحة</span>
+          </div>
+        </div>
       </a>
       
       <a href="chapter4.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="chapter4.jpg" alt="فصل 4">
-        <h3>الفصل 4: ندم متأخر</h3>
+        <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 4">
+        <div class="chapter-info">
+          <h3>الفصل 4: ندم متأخر</h3>
+          <p>الاختيارات الصعبة والآثار غير المتوقعة لقرارات الماضي تظهر.</p>
+          <div class="chapter-meta">
+            <span><i class="far fa-calendar"></i> 22 أبريل 2023</span>
+            <span><i class="far fa-clock"></i> 30 صفحة</span>
+          </div>
+        </div>
       </a>
     </div>
   </div>
@@ -896,7 +951,7 @@
       <h2 class="section-title animate-on-scroll">فريق العمل</h2>
       <div class="team-members">
         <div class="team-member animate-on-scroll">
-          <img src="me.jpg" alt="صورة المطور" class="member-img">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="صورة المطور" class="member-img">
           <h4> مروان محمد</h4>
           <div class="role">مطور الموقع</div>
           <p>مطور ويب محترف متخصص في إنشاء مواقع تفاعلية وجذابة للمانجا والقصص المصورة.</p>
