@@ -206,11 +206,14 @@
       bottom: 0;
       background-color: rgba(0, 0, 0, 0.7);
       z-index: 1500;
-      display: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
     }
 
     .overlay.active {
-      display: block;
+      opacity: 1;
+      visibility: visible;
     }
 
     /* الهيدر */
@@ -219,7 +222,7 @@
       height: 100vh;
       min-height: 600px;
       background: linear-gradient(var(--overlay), var(--overlay)),
-                  url('cover.jpg') no-repeat center center / cover;
+                  url('https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -323,6 +326,89 @@
       color: var(--text);
     }
 
+    /* قسم حول العمل */
+    .about-section {
+      background: linear-gradient(135deg, var(--card), var(--bg));
+      border-radius: 20px;
+      padding: 40px;
+      margin: 60px 0;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about-header h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .about-header p {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .detail-card {
+      background: var(--bg);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .detail-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px var(--shadow);
+    }
+
+    .detail-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .detail-card h3 i {
+      color: var(--secondary);
+    }
+
+    .detail-card p {
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .age-warning {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-weight: bold;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
     /* بطاقات الفصول */
     .chapters {
       display: grid;
@@ -340,6 +426,8 @@
       box-shadow: 0 5px 15px var(--shadow);
       position: relative;
       border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
     }
 
     .chapter-card:hover {
@@ -377,6 +465,9 @@
     .chapter-info {
       padding: 20px;
       position: relative;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .chapter-card h3 {
@@ -390,6 +481,7 @@
       font-size: 0.95rem;
       margin-bottom: 15px;
       opacity: 0.9;
+      flex-grow: 1;
     }
 
     .chapter-meta {
@@ -411,6 +503,7 @@
       transition: var(--transition);
       margin-top: 10px;
       border: 1px solid transparent;
+      text-align: center;
     }
 
     .read-btn:hover {
@@ -486,6 +579,121 @@
     .social-links a:hover {
       color: var(--primary);
       transform: translateY(-3px);
+    }
+
+    /* قسم الاتصال */
+    .contact-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+      color: white;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      font-family: 'Tajawal', sans-serif;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+    }
+
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 15px;
+      background: white;
+      color: var(--primary);
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background: var(--accent);
+      color: white;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .info-item {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      transition: var(--transition);
+    }
+
+    .info-item:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .info-item i {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .info-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .info-item p {
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
 
     /* الفوتر */
@@ -601,18 +809,6 @@
       }
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-15px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
     /* التكيف مع الشاشات الصغيرة */
     @media (max-width: 992px) {
       header h1 {
@@ -661,6 +857,14 @@
         flex-direction: column;
         align-items: center;
       }
+      
+      .about-section {
+        padding: 30px 20px;
+      }
+      
+      .detail-card {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -674,8 +878,8 @@
     
     <div class="nav-links">
       <a href="#home">الرئيسية</a>
-      <a href="#chapters">الفصول</a>
       <a href="#about">حول العمل</a>
+      <a href="#chapters">الفصول</a>
       <a href="#team">الفريق</a>
       <a href="#contact">اتصل بنا</a>
     </div>
@@ -699,8 +903,8 @@
     </button>
     <ul class="mobile-links">
       <li><a href="#home">الرئيسية</a></li>
-      <li><a href="#chapters">الفصول</a></li>
       <li><a href="#about">حول العمل</a></li>
+      <li><a href="#chapters">الفصول</a></li>
       <li><a href="#team">الفريق</a></li>
       <li><a href="#contact">اتصل بنا</a></li>
     </ul>
@@ -722,6 +926,42 @@
       "بقايا روح" هي رحلة استكشافية في عالم موازٍ مليء بالأسرار والغموض. تتبع القصة مجموعة من الأصدقاء يكتشفون لوحة قديمة تحمل قوى خارقة، 
       تقودهم إلى عالم غريب حيث تختلط الحدود بين الواقع والخيال. مع تقدم القصة، يكتشفون أنهم جزء من نبوءة قديمة قد تغير مصير العالمين.
     </p>
+
+    <!-- قسم حول العمل -->
+    <div id="about" class="about-section animate-on-scroll">
+      <div class="about-content">
+        <div class="about-header">
+          <h2>تفاصيل العمل</h2>
+          <p>استكشف عالم بقايا روح الغامض وتفاصيل القصة الشيقة</p>
+        </div>
+        
+        <div class="about-details">
+          <div class="detail-card">
+            <h3><i class="fas fa-mask"></i> النوع الأدبي</h3>
+            <p>تندرج مانجا "بقايا روح" تحت عدة أنواع أدبية تجذب عشاق القصص الغامضة والمثيرة:</p>
+            <ul style="padding-right: 20px; margin-top: 15px;">
+              <li style="margin-bottom: 10px;">غموض وإثارة</li>
+              <li style="margin-bottom: 10px;">استكشاف عوالم موازية</li>
+              <li style="margin-bottom: 10px;">دراما نفسية عميقة</li>
+              <li>إثارة وتشويق</li>
+            </ul>
+          </div>
+          
+          <div class="detail-card">
+            <h3><i class="fas fa-book-open"></i> الحبكة القصصية</h3>
+            <p>تدور القصة حول مجموعة من الأصدقاء يكتشفون لوحة غامضة في قبو منزل قديم، تقودهم هذه اللوحة إلى عالم موازٍ حيث تختلط الحدود بين الواقع والخيال.</p>
+            <p>يكتشف الأبطال أنهم جزء من نبوءة قديمة تحدد مصير العالمين، ويجب عليهم حل الألغاز والكشف عن الأسرار المخفية لإنقاذ الواقع الذي يعرفونه.</p>
+          </div>
+          
+          <div class="detail-card">
+            <h3><i class="fas fa-user-plus"></i> الفئة المستهدفة</h3>
+            <p>تم تصميم العمل لجمهور المراهقين والبالغين الذين يحبون القصص الغامضة والعوالم الخيالية المعقدة.</p>
+            <p>تحتوي القصة على عناصر درامية ونفسية عميقة تتطلب فهماً ناضجاً للأحداث والشخصيات.</p>
+            <div class="age-warning">العمر الأدنى: 13+</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- الفصول -->
     <h2 class="section-title animate-on-scroll" id="chapters">الفصول</h2>
@@ -800,6 +1040,62 @@
     </div>
   </div>
 
+  <!-- قسم الاتصال -->
+  <div id="contact" class="contact-section animate-on-scroll">
+    <div class="contact-container">
+      <h2 class="section-title" style="color: white;">اتصل بنا</h2>
+      <p class="description" style="color: rgba(255, 255, 255, 0.9);">
+        لديك استفسار أو ملاحظة؟ لا تتردد في التواصل معنا عبر النموذج التالي
+      </p>
+      
+      <div class="contact-form">
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">الاسم الكامل</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">الموضوع</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">الرسالة</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">إرسال الرسالة</button>
+        </form>
+      </div>
+      
+      <div class="contact-info">
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <h3>البريد الإلكتروني</h3>
+          <p>info@baqaya-rooh.com</p>
+        </div>
+        
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <h3>الهاتف</h3>
+          <p>+966 123 456 789</p>
+        </div>
+        
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>العنوان</h3>
+          <p>الرياض، المملكة العربية السعودية</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- الفوتر -->
   <footer class="footer">
     <div class="footer-content">
@@ -818,8 +1114,8 @@
         <h3>روابط سريعة</h3>
         <ul class="footer-links">
           <li><a href="#home">الرئيسية</a></li>
-          <li><a href="#chapters">الفصول</a></li>
           <li><a href="#about">حول العمل</a></li>
+          <li><a href="#chapters">الفصول</a></li>
           <li><a href="#team">الفريق</a></li>
           <li><a href="#contact">اتصل بنا</a></li>
         </ul>
@@ -935,6 +1231,18 @@
           }
         });
       });
+      
+      // إرسال نموذج الاتصال
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // هنا يمكنك إضافة كود لإرسال البيانات إلى الخادم
+          alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا.');
+          contactForm.reset();
+        });
+      }
     });
   </script>
 </body>
