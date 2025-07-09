@@ -27,15 +27,13 @@
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1a1a1a;
-        --text: #f0f0f0;
-        --card: #2a2a2a;
-        --border: #444;
-        --shadow: rgba(0, 0, 0, 0.4);
-        --overlay: rgba(0, 0, 0, 0.85);
-      }
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --text: #f0f0f0;
+      --card: #2a2a2a;
+      --border: #444;
+      --shadow: rgba(0, 0, 0, 0.4);
+      --overlay: rgba(0, 0, 0, 0.85);
     }
 
     * {
@@ -149,13 +147,79 @@
       color: var(--primary-light);
     }
 
+    /* القائمة الجانبية */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100%;
+      background-color: var(--card);
+      z-index: 2000;
+      transition: var(--transition);
+      box-shadow: -5px 0 15px var(--shadow);
+      padding: 80px 20px 20px;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .mobile-links a {
+      display: block;
+      padding: 12px 15px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .mobile-links a:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1500;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
     /* الهيدر */
     header {
       position: relative;
       height: 100vh;
       min-height: 600px;
       background: linear-gradient(var(--overlay), var(--overlay)),
-                  url('https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center / cover;
+                  url('cover.jpg') no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -174,7 +238,7 @@
     }
 
     header h1 {
-      font-size: 4.5rem;
+      font-size: 4rem;
       color: white;
       margin-bottom: 20px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -194,7 +258,7 @@
     }
 
     .subtitle {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: rgba(255, 255, 255, 0.9);
       margin-bottom: 30px;
       max-width: 600px;
@@ -204,7 +268,7 @@
 
     .cta-button {
       display: inline-block;
-      padding: 15px 40px;
+      padding: 14px 35px;
       background: linear-gradient(45deg, var(--primary), var(--primary-dark));
       color: white;
       text-decoration: none;
@@ -232,7 +296,7 @@
 
     .section-title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       margin-bottom: 60px;
       position: relative;
       color: var(--primary);
@@ -252,7 +316,7 @@
 
     .description {
       text-align: center;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       max-width: 800px;
       margin: 0 auto 60px;
       line-height: 1.8;
@@ -279,7 +343,7 @@
     }
 
     .chapter-card:hover {
-      transform: translateY(-15px) scale(1.03);
+      transform: translateY(-10px);
       box-shadow: 0 15px 30px var(--shadow);
     }
 
@@ -307,7 +371,7 @@
     }
 
     .chapter-card:hover img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .chapter-info {
@@ -550,6 +614,24 @@
     }
 
     /* التكيف مع الشاشات الصغيرة */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .chapters {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
     @media (max-width: 768px) {
       .navbar {
         padding: 12px 5%;
@@ -560,15 +642,15 @@
       }
       
       header h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
       
       .subtitle {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       
       .chapters {
@@ -578,22 +660,6 @@
       .team-members {
         flex-direction: column;
         align-items: center;
-      }
-    }
-
-    /* زر القائمة المتنقلة */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
       }
     }
   </style>
@@ -618,11 +684,27 @@
       <button id="theme-toggle" aria-label="تبديل وضع الألوان">
         <i class="fas fa-moon"></i>
       </button>
-      <button class="mobile-menu-btn" aria-label="فتح القائمة">
+      <button id="mobile-menu-btn" aria-label="فتح القائمة">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </nav>
+
+  <!-- القائمة الجانبية للجوال -->
+  <div class="overlay" id="overlay"></div>
+  
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-menu" id="close-menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul class="mobile-links">
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#chapters">الفصول</a></li>
+      <li><a href="#about">حول العمل</a></li>
+      <li><a href="#team">الفريق</a></li>
+      <li><a href="#contact">اتصل بنا</a></li>
+    </ul>
+  </div>
 
   <!-- الهيدر -->
   <header id="home">
@@ -645,7 +727,7 @@
     <h2 class="section-title animate-on-scroll" id="chapters">الفصول</h2>
     <div class="chapters">
       <a href="chapter1.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 1">
+        <img src="chapter1.jpg" alt="فصل 1">
         <div class="chapter-info">
           <h3>الفصل 1: العودة</h3>
           <p>اكتشاف اللوحة الغامضة في القبو القديم الذي يغير حياة الشخصيات إلى الأبد.</p>
@@ -658,7 +740,7 @@
       </a>
       
       <a href="chapter2.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 2">
+        <img src="chapter2.jpg" alt="فصل 2">
         <div class="chapter-info">
           <h3>الفصل 2: اللوحة التي لا تموت</h3>
           <p>الأسرار المخفية وراء اللوحة تبدأ بالظهور، وتكشف عن عالم موازٍ غريب.</p>
@@ -671,7 +753,7 @@
       </a>
       
       <a href="chapter3.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 3">
+        <img src="chapter3.jpg" alt="فصل 3">
         <div class="chapter-info">
           <h3>الفصل 3: صدى الذاكرة</h3>
           <p>الذكريات المفقودة تعود لتربط الشخصيات بمصيرهم في العالم الآخر.</p>
@@ -684,7 +766,7 @@
       </a>
       
       <a href="chapter4.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1531303516758-6e803a6a6aeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="فصل 4">
+        <img src="chapter4.jpg" alt="فصل 4">
         <div class="chapter-info">
           <h3>الفصل 4: ندم متأخر</h3>
           <p>الاختيارات الصعبة والآثار غير المتوقعة لقرارات الماضي تظهر.</p>
@@ -706,24 +788,12 @@
         <div class="team-member animate-on-scroll">
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="المؤلف" class="member-img">
           <h4>عمر الشريف</h4>
-          <div class="role">كاتب القصة</div>
-          <p>مؤلف قصصي خبير في الخيال العلمي والفانتازيا، صاحب العديد من الأعمال الناجحة.</p>
+          <div class="role">مطور الموقع</div>
+          <p>مطور ويب محترف متخصص في إنشاء مواقع تفاعلية وجذابة للمانجا والقصص المصورة.</p>
           <div class="social-links">
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
-        
-        <div class="team-member animate-on-scroll">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="الرسامة" class="member-img">
-          <h4>ليلى أحمد</h4>
-          <div class="role">رسامة المانجا</div>
-          <p>فنانة موهوبة متخصصة في الرسم الرقمي والمانجا، عملت في العديد من المشاريع المشهورة.</p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-deviantart"></i></a>
           </div>
         </div>
       </div>
@@ -771,17 +841,50 @@
   <script>
     // وظيفة لتحميل الصفحة بسلاسة
     document.addEventListener('DOMContentLoaded', function() {
+      // عناصر القائمة الجانبية
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const closeMenuBtn = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('overlay');
+      
+      // فتح القائمة الجانبية
+      mobileMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      // إغلاق القائمة الجانبية
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      closeMenuBtn.addEventListener('click', closeMobileMenu);
+      overlay.addEventListener('click', closeMobileMenu);
+      
       // تبديل وضع الألوان
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      
+      // تطبيق الوضع المحفوظ
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
       
       themeToggle.addEventListener('click', function() {
         if (document.documentElement.getAttribute('data-theme') === 'dark') {
           document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
           themeIcon.classList.remove('fa-sun');
           themeIcon.classList.add('fa-moon');
         } else {
           document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
           themeIcon.classList.remove('fa-moon');
           themeIcon.classList.add('fa-sun');
         }
@@ -826,6 +929,9 @@
               top: targetElement.offsetTop - 80,
               behavior: 'smooth'
             });
+            
+            // إغلاق القائمة الجانبية إذا كانت مفتوحة
+            closeMobileMenu();
           }
         });
       });
