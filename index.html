@@ -196,7 +196,6 @@
       color: var(--text);
       font-size: 1.5rem;
       cursor: pointer;
-      z-index: 2001;
     }
 
     .overlay {
@@ -247,9 +246,6 @@
       margin-bottom: 20px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       position: relative;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 15px 30px;
-      border-radius: 15px;
     }
 
     header h1::after {
@@ -417,7 +413,7 @@
     .chapters {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 30px;
       padding: 20px;
     }
 
@@ -434,7 +430,7 @@
     }
 
     .chapter-card:hover {
-      transform: translateY(-10px) scale(1.05);
+      transform: translateY(-10px);
       box-shadow: 0 15px 30px var(--shadow);
     }
 
@@ -473,12 +469,14 @@
       flex-direction: column;
     }
 
+    /* 🚀 التعديل 4: إزالة الحواف من نص الفصول */
     .chapter-card h3 {
       font-size: 1.4rem;
       margin-bottom: 10px;
       color: var(--primary);
-      text-align: center;
-      padding: 10px;
+      padding: 0; /* تم إزالة الحشو */
+      border: none; /* تم إزالة الحدود */
+      background: none; /* تم إزالة الخلفية */
     }
 
     .chapter-card p {
@@ -487,7 +485,6 @@
       margin-bottom: 15px;
       opacity: 0.9;
       flex-grow: 1;
-      text-align: center;
     }
 
     .chapter-meta {
@@ -496,9 +493,10 @@
       font-size: 0.85rem;
       color: var(--text);
       opacity: 0.7;
-      padding: 0 10px;
-      margin-top: 10px;
     }
+
+    /* 🚀 التعديل 3: إزالة زر اقرأ الآن */
+    /* .read-btn تم إزالته بالكامل */
 
     /* قسم الفريق */
     .team {
@@ -581,6 +579,9 @@
       margin: 0 auto;
       padding: 0 20px;
     }
+
+    /* 🚀 التعديل 1: إزالة نموذج الاتصال بالكامل */
+    /* تم إزالة .contact-form بالكامل */
 
     .contact-info {
       display: grid;
@@ -689,7 +690,7 @@
       border-radius: 50%;
       color: white;
       font-size: 1.2rem;
-      transition: var(--transition;
+      transition: var(--transition);
     }
 
     .footer-social a:hover {
@@ -786,13 +787,6 @@
       
       .detail-card {
         padding: 20px;
-      }
-    }
-    
-    /* إصلاحات سطح المكتب */
-    @media (min-width: 769px) {
-      .mobile-menu, .overlay {
-        display: none;
       }
     }
   </style>
@@ -904,6 +898,7 @@
             <span><i class="far fa-calendar"></i> 15 يناير 2023</span>
             <span><i class="far fa-clock"></i> 24 صفحة</span>
           </div>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
@@ -916,6 +911,7 @@
             <span><i class="far fa-calendar"></i> 12 فبراير 2023</span>
             <span><i class="far fa-clock"></i> 28 صفحة</span>
           </div>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
@@ -928,6 +924,7 @@
             <span><i class="far fa-calendar"></i> 18 مارس 2023</span>
             <span><i class="far fa-clock"></i> 32 صفحة</span>
           </div>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
@@ -940,6 +937,7 @@
             <span><i class="far fa-calendar"></i> 22 أبريل 2023</span>
             <span><i class="far fa-clock"></i> 30 صفحة</span>
           </div>
+          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
     </div>
@@ -965,6 +963,7 @@
     </div>
   </div>
 
+  <!-- 🚀 التعديل 1: إزالة نموذج الاتصال بالكامل -->
   <!-- قسم الاتصال -->
   <div id="contact" class="contact-section animate-on-scroll">
     <div class="contact-container">
