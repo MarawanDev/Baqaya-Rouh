@@ -222,7 +222,7 @@
       height: 100vh;
       min-height: 600px;
       background: linear-gradient(var(--overlay), var(--overlay)),
-                  url('https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1998&q=80') no-repeat center center / cover;
+                  url('cover.jpg') no-repeat center center / cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -469,14 +469,13 @@
       flex-direction: column;
     }
 
-    /* 🚀 التعديل 4: إزالة الحواف من نص الفصول */
     .chapter-card h3 {
       font-size: 1.4rem;
       margin-bottom: 10px;
       color: var(--primary);
-      padding: 0; /* تم إزالة الحشو */
-      border: none; /* تم إزالة الحدود */
-      background: none; /* تم إزالة الخلفية */
+      padding: 0;
+      border: none;
+      background: none;
     }
 
     .chapter-card p {
@@ -494,9 +493,6 @@
       color: var(--text);
       opacity: 0.7;
     }
-
-    /* 🚀 التعديل 3: إزالة زر اقرأ الآن */
-    /* .read-btn تم إزالته بالكامل */
 
     /* قسم الفريق */
     .team {
@@ -560,11 +556,19 @@
       color: var(--text);
       font-size: 1.2rem;
       transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.05);
     }
 
     .social-links a:hover {
-      color: var(--primary);
-      transform: translateY(-3px);
+      color: white;
+      background: var(--primary);
+      transform: translateY(-5px);
     }
 
     /* قسم الاتصال */
@@ -579,9 +583,6 @@
       margin: 0 auto;
       padding: 0 20px;
     }
-
-    /* 🚀 التعديل 1: إزالة نموذج الاتصال بالكامل */
-    /* تم إزالة .contact-form بالكامل */
 
     .contact-info {
       display: grid;
@@ -837,7 +838,7 @@
   <header id="home">
     <div class="header-content">
       <h1>بقايا روح</h1>
-      <p class="subtitle">مانجا غامضة تدور أحداثها في عالم يعج بالأسرار، حيث يكتشف الأبطال شيئًا يفوق خيالهم ويقلب واقعهم رأسًا على عقب.</p>
+      <p class="subtitle">مانجا نفسية غامضة تكشف هشاشة الروح البشرية في مواجهة الندم، الفقد، والذكريات التي ترفض الرحيل.</p>
       <a href="#chapters" class="cta-button">اكتشف الفصول <i class="fas fa-arrow-left"></i></a>
     </div>
   </header>
@@ -845,9 +846,7 @@
   <!-- المحتوى الرئيسي -->
   <div class="container">
     <h2 class="section-title animate-on-scroll">حول المانجا</h2>
-    <p class="description animate-on-scroll">
-      "بقايا روح" هي رحلة استكشافية في عالم موازٍ مليء بالأسرار والغموض. تتبع القصة مجموعة من الأصدقاء يكتشفون لوحة قديمة تحمل قوى خارقة، 
-      تقودهم إلى عالم غريب حيث تختلط الحدود بين الواقع والخيال. مع تقدم القصة، يكتشفون أنهم جزء من نبوءة قديمة قد تغير مصير العالمين.
+    <p class="description animate-on-scroll">بقايا روح ليست مجرد رحلة في عالم موازي، بل غوص داخلي في أعماق النفس. تدور القصة حول شخصية رئيسية تحاول الهروب من ماضٍ ثقيل، لكنها تجد نفسها في واقع يزداد غرابة كلما ظنت أنها فهمته. مع كل فصل، تظهر حقيقة جديدة تهز القارئ وتعيد تعريف ما هو حقيقي وما هو وهم. النهاية ليست مبهجة، ولكنها حقيقية… ومريرة.
     </p>
 
     <!-- قسم حول العمل -->
@@ -872,8 +871,9 @@
           
           <div class="detail-card">
             <h3><i class="fas fa-book-open"></i> الحبكة القصصية</h3>
-            <p>تدور القصة حول مجموعة من الأصدقاء يكتشفون لوحة غامضة في قبو منزل قديم، تقودهم هذه اللوحة إلى عالم موازٍ حيث تختلط الحدود بين الواقع والخيال.</p>
-            <p>يكتشف الأبطال أنهم جزء من نبوءة قديمة تحدد مصير العالمين، ويجب عليهم حل الألغاز والكشف عن الأسرار المخفية لإنقاذ الواقع الذي يعرفونه.</p>
+            <p>شخص واحد، ذاكرة ممزقة، وندم لا يموت.
+كل شيء يبدأ بلوحة قديمة، لكن الحقيقة تبدأ عندما يبدأ العقل في التآكل.
+هل العالم الموازي حقيقي؟ أم أنه مجرد بقايا من روح محطمة تحاول النجاة؟</p>
           </div>
           
           <div class="detail-card">
@@ -890,54 +890,53 @@
     <h2 class="section-title animate-on-scroll" id="chapters">الفصول</h2>
     <div class="chapters">
       <a href="chapter1.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 1">
+        <img src="chapter1.jpg" alt="فصل 1">
         <div class="chapter-info">
           <h3>الفصل 1: العودة</h3>
-          <p>اكتشاف اللوحة الغامضة في القبو القديم الذي يغير حياة الشخصيات إلى الأبد.</p>
+          <p>بداية غير متوقعة لحقيقة غير مكتشفة.</p>
           <div class="chapter-meta">
-            <span><i class="far fa-calendar"></i> 15 يناير 2023</span>
-            <span><i class="far fa-clock"></i> 24 صفحة</span>
+            <span><i class="far fa-calendar"></i>2 يوليو 2025</span>
+            <span><i class="far fa-clock"></i> 10 صفحة</span>
           </div>
-          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
       <a href="chapter2.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1535905557558-afc4877a26fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 2">
+        <img src="chapter2.jpg" alt="فصل 2">
         <div class="chapter-info">
           <h3>الفصل 2: اللوحة التي لا تموت</h3>
-          <p>الأسرار المخفية وراء اللوحة تبدأ بالظهور، وتكشف عن عالم موازٍ غريب.</p>
+          <p>ما بين الفن واللعنة، تبدأ الذكريات في النبض.</p>
           <div class="chapter-meta">
-            <span><i class="far fa-calendar"></i> 12 فبراير 2023</span>
-            <span><i class="far fa-clock"></i> 28 صفحة</span>
+            <span><i class="far fa-calendar"></i> 2 يوليو 2025</span>
+            <span><i class="far fa-clock"></i> 11 صفحة</span>
           </div>
-          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
       <a href="chapter3.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 3">
+        <img src="chapter3.jpg" alt="فصل 3">
         <div class="chapter-info">
           <h3>الفصل 3: صدى الذاكرة</h3>
-          <p>الذكريات المفقودة تعود لتربط الشخصيات بمصيرهم في العالم الآخر.</p>
+          <p>الذكريات المفقودة تجد طريقها، لكنها تحمل وجعًا أكبر.</p>
           <div class="chapter-meta">
-            <span><i class="far fa-calendar"></i> 18 مارس 2023</span>
-            <span><i class="far fa-clock"></i> 32 صفحة</span>
+            <span><i class="far fa-calendar"></i> 4 يوليو 2025</span>
+            <span><i class="far fa-clock"></i> 16 صفحة</span>
           </div>
-          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
       
       <a href="chapter4.pdf" target="_blank" class="chapter-card animate-on-scroll">
-        <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="فصل 4">
+        <img src="chapter4.jpg" alt="فصل 4">
         <div class="chapter-info">
           <h3>الفصل 4: ندم متأخر</h3>
-          <p>الاختيارات الصعبة والآثار غير المتوقعة لقرارات الماضي تظهر.</p>
+          <p>بعض الأخطاء لا يمكن محوها… حتى وإن أردت ذلك.</p>
           <div class="chapter-meta">
-            <span><i class="far fa-calendar"></i> 22 أبريل 2023</span>
-            <span><i class="far fa-clock"></i> 30 صفحة</span>
+        
+            
+            <span><i class="far fa-calendar"></i> 9 يوليو 2025</span>
+            <span><i class="far fa-clock"></i> 9 صفحة</span>
+            
           </div>
-          <!-- 🚀 التعديل 2: تم إزالة زر اقرأ الآن -->
         </div>
       </a>
     </div>
@@ -949,21 +948,29 @@
       <h2 class="section-title animate-on-scroll">فريق العمل</h2>
       <div class="team-members">
         <div class="team-member animate-on-scroll">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="صورة المطور" class="member-img">
+          <img src="me.jpg" alt="صورة المطور" class="member-img">
           <h4> مروان محمد</h4>
-          <div class="role">مطور الموقع</div>
-          <p>مطور ويب محترف متخصص في إنشاء مواقع تفاعلية وجذابة للمانجا والقصص المصورة.</p>
+          <div class="role">كاتب ومصمم ومطور</div>
+          <p>مبتكر مشروع "بقايا روح" بجميع تفاصيله من الفكرة إلى الموقع، بأسلوب فني ونفسي فريد.</p>
           <div class="social-links">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/marawan.dev" target="_blank" title="فيسبوك">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/marawan4584?igsh=MThiOXoweWd6aHU1cA==" target="_blank" title="إنستجرام">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/MarawanDev" target="_blank" title="جيت هوب">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.tiktok.com/@code_ceen?_t=ZS-8xtLproqQlc&_r=1" target="_blank" title="تيك توك">
+              <i class="fab fa-tiktok"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 🚀 التعديل 1: إزالة نموذج الاتصال بالكامل -->
   <!-- قسم الاتصال -->
   <div id="contact" class="contact-section animate-on-scroll">
     <div class="contact-container">
@@ -999,12 +1006,20 @@
     <div class="footer-content">
       <div class="footer-section">
         <h3>بقايا روح</h3>
-        <p>مانجا غامضة تأخذك في رحلة إلى عالم موازٍ حيث الأسرار والخيال يمتزجان بالواقع.</p>
+        <p> عندما لا تكون النهاية مجرد نهاية، بل حقيقة نكتشفها متأخرين…</p>
         <div class="footer-social">
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/marawan.dev" target="_blank" title="فيسبوك">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/marawan4584?igsh=MThiOXoweWd6aHU1cA==" target="_blank" title="إنستجرام">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/MarawanDev" target="_blank" title="جيت هوب">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.tiktok.com/@code_ceen?_t=ZS-8xtLproqQlc&_r=1" target="_blank" title="تيك توك">
+            <i class="fab fa-tiktok"></i>
+          </a>
         </div>
       </div>
       
@@ -1033,22 +1048,18 @@
   </footer>
 
   <script>
-    // وظيفة لتحميل الصفحة بسلاسة
     document.addEventListener('DOMContentLoaded', function() {
-      // عناصر القائمة الجانبية
       const mobileMenuBtn = document.getElementById('mobile-menu-btn');
       const closeMenuBtn = document.getElementById('close-menu');
       const mobileMenu = document.getElementById('mobile-menu');
       const overlay = document.getElementById('overlay');
       
-      // فتح القائمة الجانبية
       mobileMenuBtn.addEventListener('click', function() {
         mobileMenu.classList.add('active');
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
       
-      // إغلاق القائمة الجانبية
       function closeMobileMenu() {
         mobileMenu.classList.remove('active');
         overlay.classList.remove('active');
@@ -1058,12 +1069,10 @@
       closeMenuBtn.addEventListener('click', closeMobileMenu);
       overlay.addEventListener('click', closeMobileMenu);
       
-      // تبديل وضع الألوان
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       const currentTheme = localStorage.getItem('theme') || 'light';
       
-      // تطبيق الوضع المحفوظ
       if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         themeIcon.classList.remove('fa-moon');
@@ -1084,7 +1093,6 @@
         }
       });
       
-      // تأثير التمرير للشريط التنقل
       window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
@@ -1094,7 +1102,6 @@
         }
       });
       
-      // تأثير الظهور عند التمرير
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1109,7 +1116,6 @@
         observer.observe(element);
       });
       
-      // التمرير السلس للروابط
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
@@ -1124,7 +1130,6 @@
               behavior: 'smooth'
             });
             
-            // إغلاق القائمة الجانبية إذا كانت مفتوحة
             closeMobileMenu();
           }
         });
